@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Open Data - Education Enrollment Numbers</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="content/tableDrawer.js"></script>
+        <script type="text/javascript" src="content/dataLoader.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="content/main.css"></link>
+    </head>
+
+    <body>
+        <header>
+            <h1>Historical Look at PEI School Attendance</h1>
+            <p>PEI Release Open Data. This is a first look at the Educaiton Data provided</p>
+        </header>
+        <article>
+            <div id="theGraph"> </div>
+        </article>
+
+        <footer>
+            A visualization of
+            <a href="https://www.princeedwardisland.ca/en/service/official-pei-school-enrollment-1999-2015-open-data">
+                this data set</a>,
+            licensed under the
+            <a href="https://www.princeedwardisland.ca/en/information/finance/open-government-licence-prince-edward-island">
+                Open Government License - Prince Edward Island</a>
+        </footer>
+
+        <script type="text/javascript">
+            loadData( 'data/SchoolEnrollments.csv' ).then( result => {
+                let table = new SchoolAttendanceTable( result.headerRows, result.schoolData );
+                table.addMetaData().draw( 'theGraph' );
+
+                console.log( `There are ${ result.headerRows.length - 1} years of data for ${ result.schoolData.length } schools` );
+            });
+        </script>
+    </body>
+</html>

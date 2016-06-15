@@ -1,0 +1,28 @@
+header {
+    width: 100%;
+    background-color: #009587;
+    padding-top: 50px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+article {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1300px;
+    height: 450px;
+}
+
+footer {
+    text-align: center;
+}
+
+header h1,
+header p {
+    text-align: center;
+    color: white;
+}
+
+.google-visualization-table-page-number {
+    width: 20px;
+}
