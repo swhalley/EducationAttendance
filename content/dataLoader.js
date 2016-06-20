@@ -9,14 +9,14 @@ function loadData( filePath ){
                 let headerRows = rawSchoolData.slice(0, 1)[0].filter( lineItem => !!lineItem );
                 let schoolData = rawSchoolData.slice(1).map( school => school.slice( 0, headerRows.length));
 
-				// Grab only the numbers, leaving behind the school names
-				let enrollNumOnly = schoolData.map(school => school.slice(1));
-				
-				// Convert strings to numbers
-				let fixedEnrolNumbersAsNumbers = enrollNumOnly.map(enrollCountList => enrollCountList.map(enrollCount => +enrollCount));
-				
-				// Rejoin school names with enroll data as numbers - assume no sorting happened since separation of numbers
-				schoolData = schoolData.map((school, index) => [school[0]].concat(fixedEnrolNumbersAsNumbers[index])); 
+                // Grab only the numbers, leaving behind the school names
+                let enrollNumOnly = schoolData.map(school => school.slice(1));
+
+                // Convert strings to numbers
+                let fixedEnrolNumbersAsNumbers = enrollNumOnly.map(enrollCountList => enrollCountList.map(enrollCount => +enrollCount));
+
+                // Rejoin school names with enroll data as numbers - assume no sorting happened since separation of numbers
+                schoolData = schoolData.map((school, index) => [school[0]].concat(fixedEnrolNumbersAsNumbers[index])); 
 
                 resolve( { headerRows, schoolData });
             }
